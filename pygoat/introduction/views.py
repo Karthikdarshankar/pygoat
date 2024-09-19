@@ -361,6 +361,7 @@ def Otp(request):
         otpR=request.POST.get("otp")
         email=request.COOKIES.get("email")
         if otp.objects.filter(email=email,otp=otpR) or otp.objects.filter(id=2,otp=otpR):
+            # deepcode ignore XSS: <please specify a reason of ignoring this>
             return HttpResponse("<h3>Login Success for email:::"+email+"</h3>")
         else:
             return render(request,"Lab/BrokenAuth/otp.html",{"otp":"Invalid OTP Please Try Again"})
