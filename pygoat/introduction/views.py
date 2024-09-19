@@ -309,6 +309,7 @@ def cmd_lab(request):
             else:
                 command = "dig {}".format(domain)
 
+            # deepcode ignore CommandInjection: <please specify a reason of ignoring this>
             output=subprocess.check_output(command,shell=True,encoding="UTF-8");
             print(output)
             return render(request,'Lab/CMD/cmd_lab.html',{"output":output})
